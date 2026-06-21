@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>leyu 简明指南 · 信息卡片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf9f7;
+      color: #1e1e1f;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.65;
+      padding: 2rem 1.2rem;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* 主视觉 / hero */
+    .hero {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      color: #1d1d1b;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #5f5f5e;
+      max-width: 440px;
+      margin: 0 auto 0.8rem;
+      border-bottom: 1px solid #e2e1de;
+      padding-bottom: 1.5rem;
+    }
+
+    .hero .meta-note {
+      font-size: 0.85rem;
+      color: #8c8b88;
+      background: #f2f1ee;
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      color: #242423;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h2::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #b0aba6;
+      border-radius: 50%;
+    }
+
+    .card p {
+      font-size: 0.97rem;
+      color: #3b3b39;
+      margin-bottom: 0.4rem;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .card li {
+      font-size: 0.95rem;
+      padding: 0.35rem 0;
+      color: #434341;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .card li::before {
+      content: '—';
+      color: #b3afaa;
+      font-weight: 300;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #efede9;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: #4d4c49;
+      margin-right: 0.3rem;
+      font-weight: 430;
+    }
+
+    .link-embed {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.6rem 2rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #eae8e4;
+      line-height: 1.7;
+    }
+
+    .link-embed p {
+      font-size: 1rem;
+      color: #2d2d2b;
+    }
+
+    .link-embed a {
+      color: #2c5f2c;
+      text-decoration: none;
+      font-weight: 470;
+      border-bottom: 1px solid #b7cfb7;
+      transition: border-color 0.15s;
+    }
+
+    .link-embed a:hover {
+      border-bottom-color: #2c5f2c;
+    }
+
+    .faq-mini {
+      background: #f6f5f2;
+      border-radius: 28px;
+      padding: 1.6rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .faq-mini h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #1e1e1d;
+      letter-spacing: -0.01em;
+    }
+
+    .faq-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .faq-item .q {
+      font-weight: 470;
+      font-size: 0.95rem;
+      color: #2c2c2a;
+    }
+
+    .faq-item .a {
+      font-size: 0.89rem;
+      color: #5d5c59;
+      margin-top: 0.2rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid #d6d3ce;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #8b8985;
+      border-top: 1px solid #e2dfdb;
+      padding-top: 1.8rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .card,
+      .link-embed,
+      .faq-mini {
+        padding: 1.4rem 1.2rem;
+        border-radius: 20px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- hero / 主视觉 -->
+    <div class="hero">
+      <h1>leyu · 简明指南</h1>
+      <div class="sub">
+        在信息与访问之间，提供一个安静的落脚点。
+      </div>
+      <div class="meta-note">基于日常使用场景整理 · 无夸大引导</div>
+    </div>
+
+    <!-- 信息卡片区 -->
+    <div class="card-grid">
+
+      <!-- 用途卡片 -->
+      <div class="card">
+        <h2>用途场景</h2>
+        <p>leyu 所指向的站点，偏向于内容聚合与轻量工具的组合。以下是一些常见的使用方向：</p>
+        <ul>
+          <li>浏览分类信息与资源索引</li>
+          <li>快速查找特定主题的摘要</li>
+          <li>访问经过整理的链接集合</li>
+        </ul>
+        <div style="margin-top: 0.7rem;">
+          <span class="tag">导航</span>
+          <span class="tag">索引</span>
+          <span class="tag">信息页</span>
+        </div>
+      </div>
+
+      <!-- 适合人群卡片 -->
+      <div class="card">
+        <h2>适合人群</h2>
+        <p>如果你符合以下任意一条，可能会觉得 leyu 提供的东西恰好够用：</p>
+        <ul>
+          <li>需要快速翻阅某个领域的简明条目</li>
+          <li>偏好极简界面，不愿被复杂菜单干扰</li>
+          <li>日常有收集和参考链接的习惯</li>
+        </ul>
+        <p style="margin-top: 0.6rem; color: #5a5956;">整体偏向实用向，不依赖注册或个性化订阅。</p>
+      </div>
+
+      <!-- 访问提醒卡片 -->
+      <div class="card">
+        <h2>访问提醒</h2>
+        <p>使用过程中留意以下几点，能让体验更顺畅：</p>
+        <ul>
+          <li>部分资源可能来自外部域，注意核对来源</li>
+          <li>页面结构偶尔会调整，以实际展示为准</li>
+          <li>建议使用现代浏览器访问，保证样式正常</li>
+        </ul>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6b6a67;">无自动跳转，无强制弹窗。</p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落（嵌入句子） -->
+    <div class="link-embed">
+      <p>
+        如果你正在寻找一个直接、不绕弯的起点，可以试试 <a href="https://ssl-main-leyu.com">leyu</a> ——
+        它只是安静地放在那里，不做多余的解释。页面本身偏向信息卡片式，结构清晰，也适合作为参考页保存。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要（非完整 FAQ，仅摘录几个常见问题） -->
+    <div class="faq-mini">
+      <h3>FAQ 摘要</h3>
+      <div class="faq-item">
+        <div class="q">页面加载后我应该做什么？</div>
+        <div class="a">浏览导航条目或卡片内容，根据你的需要选择感兴趣的部分。没有强制引导。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">是否包含下载或注册流程？</div>
+        <div class="a">不包含。leyu 当前呈现的是信息展示型页面，不涉及账户体系。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">移动端浏览体验如何？</div>
+        <div class="a">卡片和文字均已适配窄屏，字号和间距保持可读性，无需横向缩放。</div>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+      leyu · 内容基于公开信息整理 · 不构成任何建议
+    </div>
+
+  </div>
+</body>
+</html>
