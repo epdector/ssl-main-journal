@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品说明 · leyu 信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce4c8 0%, #f7d9c4 40%, #efc9b0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.6;
+            color: #2f2b27;
+        }
+
+        .card {
+            max-width: 880px;
+            width: 100%;
+            background: rgba(255, 252, 246, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 2.5rem;
+            padding: 2.8rem 2.8rem;
+            box-shadow: 0 20px 40px -12px rgba(110, 70, 40, 0.28), 0 8px 20px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s ease;
+            border: 1px solid rgba(255, 240, 220, 0.4);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #603a22;
+            margin-bottom: 0.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ecbc9a;
+            display: inline-block;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #7a5e4a;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 380;
+            border-left: 4px solid #deb887;
+            padding-left: 1rem;
+            background: #fff6ed;
+            border-radius: 0 12px 12px 0;
+            width: fit-content;
+            padding: 0.55rem 1.2rem;
+        }
+
+        section {
+            margin-top: 2.2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 460;
+            color: #533e2e;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        h2::before {
+            content: "▹";
+            font-size: 1.3rem;
+            color: #b87b54;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+            text-align: justify;
+            color: #3b322b;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 1.8rem;
+            margin: 1.8rem 0 1.8rem;
+        }
+
+        .feature-item {
+            background: #fffaf3;
+            padding: 1rem 1.2rem 1rem 1.2rem;
+            border-radius: 1.4rem;
+            box-shadow: 0 4px 8px rgba(150, 90, 50, 0.04);
+            border: 1px solid #f2ddd0;
+            transition: all 0.15s;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 540;
+            color: #5b3c28;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #4e3d33;
+        }
+
+        .usage-list {
+            background: #fdf3ea;
+            padding: 1.2rem 1.8rem;
+            border-radius: 1.8rem;
+            margin: 1.2rem 0 1.8rem;
+            list-style-type: none;
+        }
+
+        .usage-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #e7cebc;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+
+        .usage-list li:last-child {
+            border-bottom: none;
+        }
+
+        .usage-list li::before {
+            content: "—";
+            color: #b87b54;
+            font-weight: 300;
+        }
+
+        .faq-brief {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.8rem 0 1.2rem;
+        }
+
+        .faq-item {
+            background: #f9efe7;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.5rem 0.9rem 1.5rem;
+            border-left: 5px solid #cb9c7c;
+        }
+
+        .faq-item q {
+            font-style: normal;
+            font-weight: 450;
+            color: #3f2d20;
+        }
+
+        .faq-item .answer {
+            margin-top: 0.25rem;
+            font-size: 0.95rem;
+            color: #4e3b2e;
+            opacity: 0.9;
+        }
+
+        .link-sentence {
+            background: #f1e2d4;
+            border-radius: 60px;
+            padding: 0.4rem 1.8rem 0.4rem 1.8rem;
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            font-size: 1.05rem;
+            font-weight: 380;
+        }
+
+        .link-sentence a {
+            color: #7c4b2c;
+            text-decoration: none;
+            font-weight: 520;
+            background: #fffaf5;
+            padding: 0.2rem 1rem 0.25rem 1rem;
+            border-radius: 40px;
+            transition: 0.15s;
+            box-shadow: 0 2px 6px rgba(140, 80, 40, 0.08);
+            border: 1px solid #dbbca4;
+            display: inline-block;
+            margin: 0 0.1rem;
+        }
+
+        .link-sentence a:hover {
+            background: #f5e3d3;
+            box-shadow: 0 3px 10px rgba(110, 60, 20, 0.1);
+            border-color: #b48260;
+            transform: scale(1.02);
+        }
+
+        .disclaimer-note {
+            margin-top: 2.2rem;
+            padding: 1.2rem 1.5rem;
+            background: #f2e7de;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            color: #4b3e36;
+            border: 1px solid #e2cebe;
+            line-height: 1.5;
+        }
+
+        .disclaimer-note strong {
+            color: #6b462c;
+            font-weight: 500;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #dbbcac, transparent);
+            margin: 1.8rem 0 1rem;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 680px) {
+            .card {
+                padding: 2rem 1.2rem;
+                border-radius: 2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .subhead {
+                font-size: 1rem;
+            }
+            .link-sentence {
+                font-size: 0.96rem;
+                padding: 0.3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>leyu · 信息索引</h1>
+    <div class="subhead">日常查询 · 对照 · 延伸阅读</div>
+
+    <section>
+        <p>当你需要快速翻阅某个服务入口、确认功能模块或对比不同路径时，一个结构清晰、指向明确的信息页往往比搜索引擎的零散结果更省力。<strong>leyu</strong> 所聚合的界面与功能模块，正好为这类日常操作提供了稳定的起点。下面从摘要、常用场景到注意事项，逐步梳理这个页面的用途与边界。</p>
+    </section>
+
+    <section>
+        <h2>摘要 · 定位</h2>
+        <p>这个页面不是孤立的产品门户，而是一个轻量化的信息中转节点。它汇总了主要功能区块的指向，并保持与 <a href="https://portal-h5-leyu.com">leyu</a> 本身一致的调用逻辑。你可以把它当作一个便携式的功能索引：既能看到模块摘要，也能快速判断下一步该从哪里着手。省去反复输入和翻找的麻烦，尤其适合碎片化时间里的轻操作。</p>
+    </section>
+
+    <section>
+        <h2>功能亮点</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>模块对照</strong>
+                <span>将不同业务分区并列展示，方便横向对比功能入口与对应说明。</span>
+            </div>
+            <div class="feature-item">
+                <strong>路径直达</strong>
+                <span>每个板块都内嵌了明确的跳转关联，避免在多层菜单中迷失。</span>
+            </div>
+            <div class="feature-item">
+                <strong>信息精简</strong>
+                <span>只保留必要的摘要与提示，不堆砌冗余描述，阅读负担低。</span>
+            </div>
+            <div class="feature-item">
+                <strong>视觉友好</strong>
+                <span>暖色渐变背景搭配白色卡片，长时间翻阅也不易疲劳。</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>使用建议</h2>
+        <ul class="usage-list">
+            <li>作为日常查询的第一站：先在本页定位模块，再通过链接进入对应界面，避免逐一翻找菜单。</li>
+            <li>进行功能对照：当你不确定某个入口是否包含所需内容时，可先阅读本页的摘要，再做决定。</li>
+            <li>延伸阅读与信息梳理：如果你正在整理笔记或制作操作指引，本页的结构可作为框架参考。</li>
+            <li>收藏备用：将本页加入浏览器书签，方便在需要时快速调取 <a href="https://portal-h5-leyu.com">leyu</a> 相关模块。</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>常见疑问 · 摘要</h2>
+        <div class="faq-brief">
+            <div class="faq-item">
+                <q>页面里的链接是否都指向同一个域名？</q>
+                <div class="answer">核心跳转均归属于 <strong>portal-h5-leyu.com</strong>，部分摘要模块会直接复用该域下的路径。</div>
+            </div>
+            <div class="faq-item">
+                <q>信息更新频率如何？</q>
+                <div class="answer">本页描述的是通用功能结构与使用方式，不涉及实时数据，因此内容相对稳定。如遇模块调整，页面会同步修订摘要。</div>
+            </div>
+            <div class="faq-item">
+                <q>可以把这个页面当作主要操作界面吗？</q>
+                <div class="answer">更适合作为辅助索引。具体操作、个人设置与数据交互仍需在对应的功能页面内完成。</div>
+            </div>
+        </div>
+    </section>
+
+    <hr />
+
+    <div class="link-sentence">
+        在需要快速调出功能索引时，可以直接使用 <a href="https://portal-h5-leyu.com">leyu</a> 作为起始点，省去中间环节。
+    </div>
+
+    <div class="disclaimer-note">
+        <strong>克制的访问说明：</strong> 本页仅提供结构化介绍与指向性摘要，不包含任何诱导性表述或夸大承诺。所有功能入口均以实际界面为准，建议在充分了解各模块用途后再进行操作。如遇到页面加载异常或链接失效，可通过浏览器的地址栏直接输入域名前往。
+    </div>
+</div>
+</body>
+</html>
