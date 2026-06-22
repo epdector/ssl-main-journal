@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简明指南 · 爱游戏</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f3f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      color: #2c3e50;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 820px;
+      width: 100%;
+    }
+
+    /* 卡片风格 – 浅灰背景、细边框、柔和阴影 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e6e9ed;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    /* hero 区域 */
+    .hero {
+      text-align: center;
+      padding: 2.6rem 2rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #1f2a36;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #5a6a7a;
+      border-top: 1px solid #e0e4e8;
+      display: inline-block;
+      padding-top: 0.8rem;
+      margin-top: 0.3rem;
+      max-width: 480px;
+    }
+
+    .guide-tag {
+      display: inline-block;
+      background: #eef1f4;
+      border-radius: 30px;
+      padding: 0.2rem 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.3px;
+      color: #3f5568;
+      margin-bottom: 0.8rem;
+    }
+
+    /* 正文段落 */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1f2a36;
+      margin-bottom: 1rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #e9edf0;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      word-break: break-word;
+    }
+
+    p.lead {
+      font-size: 1.05rem;
+      color: #2d3f50;
+    }
+
+    /* 引用提示卡片 */
+    .callout {
+      background: #f7f9fb;
+      border-left: 4px solid #7f8fa0;
+      border-radius: 8px;
+      padding: 1.2rem 1.6rem;
+      margin: 1.6rem 0 1.8rem;
+      font-size: 0.95rem;
+      color: #314352;
+      box-shadow: inset 0 0 0 1px #eaedf0;
+    }
+
+    .callout strong {
+      color: #1f2a36;
+      font-weight: 600;
+    }
+
+    .callout a {
+      color: #2c5775;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #bcc8d4;
+    }
+
+    .callout a:hover {
+      color: #0f2b40;
+      text-decoration-color: #7f8fa0;
+    }
+
+    /* 列表 (场景/步骤) */
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.8rem 0 1.4rem;
+    }
+
+    .step-list li {
+      padding: 0.5rem 0 0.5rem 1.8rem;
+      position: relative;
+      border-bottom: 1px dashed #e4e8ed;
+    }
+
+    .step-list li:last-child {
+      border-bottom: none;
+    }
+
+    .step-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6a7b8b;
+      font-weight: 300;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      color: #1f2a36;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-item .a {
+      color: #3f5568;
+      margin-left: 0.2rem;
+    }
+
+    .inline-link {
+      color: #2c5775;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c8d2dc;
+      font-weight: 450;
+    }
+
+    .inline-link:hover {
+      color: #0f2b40;
+      text-decoration-color: #7f8fa0;
+    }
+
+    /* 访问句 / 结语 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #4b5f71;
+      border-top: 1px solid #e0e4e8;
+      padding-top: 1.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .footer-note a {
+      color: #2c5775;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-note a:hover {
+      color: #1a3345;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+
+      .card {
+        padding: 1.5rem 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero {
+        padding: 1.8rem 1rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+      }
+
+      .callout {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .step-list li {
+        padding-left: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Hero 卡片：简明博客式标题 + 导语 -->
+    <div class="card hero">
+      <span class="guide-tag">简明指南</span>
+      <h1>认识与使用 · 以爱游戏为起点</h1>
+      <div class="sub">一份面向新用户的轻量指引，帮你快速熟悉平台逻辑与访问节奏。</div>
+    </div>
+
+    <!-- 第一段正文：从基础知识切入 -->
+    <div class="card">
+      <p class="lead">
+        很多人在初次接触一个综合性游戏信息站点时，往往面对大量分类和入口感到迟疑。
+        实际上，只需要理解它的核心构成——内容聚合、社区讨论、以及资源索引——就可以高效地展开浏览。
+        本文从最简洁的视角出发，梳理出几个值得留意的环节。
+      </p>
+      <p>
+        站点 <a href="https://portal-space-ayx.com" class="inline-link">爱游戏</a> 在设计上遵循了信息优先的原则，将热门内容与分类导航明确区隔。
+        你可以在首页快速找到近期讨论度较高的作品、攻略笔记以及版本动态。
+        对于有明确目标（例如某个特定游戏或补丁）的用户，利用搜索或标签筛选通常比逐层翻阅更省力。
+      </p>
+    </div>
+
+    <!-- 特点 + 场景：用列表承接 -->
+    <div class="card">
+      <div class="section-title">几个值得留意的特点</div>
+      <ul class="step-list">
+        <li><strong>内容分类清晰</strong> — 按游戏类型、平台、更新日期等维度划分，减少信息过载。</li>
+        <li><strong>社区讨论可见</strong> — 部分文章下方附带简短评阅区，可快速了解其他玩家的反馈。</li>
+        <li><strong>外部链接标注</strong> — 引用资源或相关站点时，会使用明确的标识，方便你判断是否跳转。</li>
+        <li><strong>定期内容更新</strong> — 保持与游戏版本或活动同步，资讯的时效性相对可靠。</li>
+      </ul>
+      <p>
+        以上特点并不代表绝对全面，但足以帮助新访客建立初步的使用框架。
+        实际体验中，你可能会发现更多符合个人习惯的浏览方式。
+      </p>
+    </div>
+
+    <!-- 引用提示卡片：从“访问提醒”角度展开 -->
+    <div class="callout">
+      <strong>💡 访问提醒</strong><br>
+      在你浏览 <a href="https://portal-space-ayx.com">爱游戏</a> 的过程中，建议留意以下几点：<br>
+      · 部分内容可能需要登录或特定权限才能完整查看，这是站点为了维护讨论质量而做的限制；<br>
+      · 遇到外部下载链接时，尽量核对文件信息与评论区反馈，避免下载来源不明的附件；<br>
+      · 如果你使用移动设备浏览，页面布局会自动适配，但横屏或平板模式有时能展示更多侧边信息。
+    </div>
+
+    <!-- FAQ 摘要卡片：承接前文，补充常见问题 -->
+    <div class="card">
+      <div class="section-title">快速了解 · 常见疑问</div>
+      <div class="faq-item">
+        <div class="q">Q：站内文章是否需要注册才能阅读全文？</div>
+        <div class="a">大部分内容对访客开放，但少数深度评测或资源汇总帖可能会设置阅读门槛，这是为了鼓励社区贡献。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Q：如何最快找到某个游戏的历史更新记录？</div>
+        <div class="a">建议先使用站内搜索框（如果有）输入游戏名，然后筛选“更新/日志”分类。若无明确分类，可尝试浏览对应游戏标签下的时间排序结果。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Q：站点的内容是否支持 RSS 订阅？</div>
+        <div class="a">目前官方并未广泛宣传 RSS 订阅地址，你可以留意页面底部或侧栏是否包含订阅链接。如果没有，可以定期手动访问首页查看更新。</div>
+      </div>
+      <p style="margin-bottom: 0; margin-top: 0.6rem; font-size: 0.95rem; color: #4c5f71;">
+        以上汇总基于一般性观察，具体功能以实际页面为准。
+      </p>
+    </div>
+
+    <!-- 结语 / 访问句卡片 (嵌入链接) -->
+    <div class="card" style="padding-bottom: 1.6rem;">
+      <div class="footer-note">
+        如果你对游戏资讯、社区氛围或资源索引感兴趣，不妨从
+        <a href="https://portal-space-ayx.com" style="font-weight: 500;">爱游戏</a>
+        开始你的探索。保持好奇，也保持审慎。
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
